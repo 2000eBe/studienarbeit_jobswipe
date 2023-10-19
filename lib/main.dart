@@ -1,125 +1,166 @@
+/*  Programming Fundamentals
+
+  C O M P A R I S O N    O P E R A T O R S
+
+  5 == 5 --> true, Equal to
+  2 != 3 --> true, not equal to
+  3 > 2 --> true, Greater than
+  3 < 2 --> false, less than
+  5 >= 5 --> true, greater or equal to
+  3 <= 7 --> true, less or equal to
+
+  _______________________________________________________________________
+
+  L O G I C A L    O P E R A T O R S
+
+  AND operator, return true if both sides are true
+  isBeginner && ( age < 18 ) --> return true
+
+  OR operator, return true if one or both sides are true
+  isBeginner || ( age < 18 ) --> return true
+
+  NOT operator, returns the opposite value
+  !isBeginner --> return false
+
+  _______________________________________________________________________
+
+  C O N T R O L F L O W
+
+  if(condition) {
+    do something
+  }
+
+
+  if (condition) {
+   do something
+  } else {
+   do something else
+  }
+
+
+  if (condition) {
+   do something
+  } else if (condition2) {
+   do something else
+  }
+
+  Switch case
+
+    switch(condition) {
+    case "X":
+      do something;
+      break;
+    case "Y":
+      do something else;
+      break;
+
+    default:
+      do something else again, when non of the cases above are met
+
+  _______________________________________________________________________
+  L O O P S
+
+    if you know how many times you need to loop, use a for loop
+    if you don't know how many times you need to loop, use while loop
+
+    for loop
+
+    for ( initialization; condition; iteration ) {
+      do something
+      ++iteration or --decrement it
+    }
+
+    while loop
+    while (condition) {
+      do something
+    }
+
+  _______________________________________________________________________
+
+ F U N C T I O N S / M E T H O D S
+
+  Organise blocks of code into functions, so you can reuse them easily
+
+  'void' means, that the function returns nothing
+
+  _______________________________________________________________________
+
+ D A T A S T R U C T U R E S
+
+  List is an ordered collection of elements and can have duplicates
+
+  List num = [1, 2, 3];
+  // num[0] --> 1;
+  // num[1] --> 2;
+
+  Set is unordered collection of unique elements (no duplicates)
+  Set<String> uniqueNames = {"Mitch", "Sharon", "Vince"};
+
+  Map stores key-value pairs (most likely to be used in app developement)
+  Map user = {
+    'name': "Mitch Koko",
+    'age': 27,
+    'height': 180,
+  };
+
+  Code to retrieve map elements
+  for example
+  print(user['age']); will print 27
+*/
+
+// ignore_for_file: prefer_const_constructors
+// This will prevent the IDE from demanding const everywhere
+
 import 'package:flutter/material.dart';
+import 'package:studienarbeit/pages/change_bio_page.dart';
+import 'package:studienarbeit/pages/first_page.dart';
+import 'package:studienarbeit/pages/second_page.dart';
 
 void main() {
   runApp(const MyApp());
+
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+
+  // function for Gesture Detector
+    void userTapped(){
+      print("User Tapped");
+    }
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a blue toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
+      debugShowCheckedModeBanner: false,
+      home: FirstPage(),
+     routes: {
+        '/firstpage'  : (context) => FirstPage(),
+        '/secondpage' : (context) => SecondPage(),
+        '/personalBio': (context) => PersonalBio(),
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+     },
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+     /* home: Scaffold(
+        backgroundColor: Colors.white70,
+        body: Center(
+            child: GestureDetector(
+              onTap: userTapped, //see functions above
+              child: Container(
+                height: 200,
+                width: 200,
+                color: Colors.lightGreenAccent[200],
+                child: Center(child: Text("Tap me")),
+              ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+          )
+
+          )
+*/
+        );
+
+
   }
 }
