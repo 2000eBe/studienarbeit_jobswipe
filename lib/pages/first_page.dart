@@ -10,19 +10,15 @@ class FirstPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
 
-      appBar: AppBar(
-        title: Text('TestTest'),
-        backgroundColor: Colors.red,
-      ),
       body: Column(
         children: [
-          // Bild
+          // J O B S W I P E L O G O
           Expanded(child: Container(
             padding: EdgeInsets.all(30.0),
             child:  Image.asset('images/JobSwipeLogo.png'),
           )),
 
-          // Textfeld
+          // I N T R O D U C T I O N T E X T
           Expanded(child: Container(
             padding: EdgeInsets.all(50.0),
             decoration: BoxDecoration(
@@ -37,12 +33,14 @@ class FirstPage extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                   ),),),),
 
-          // Buttons
+          // B U T T O N  A R E A
           Expanded(child: OverflowBar(
             alignment: MainAxisAlignment.spaceEvenly,
             children: [
-
-              ElevatedButton(onPressed: () {},
+              // L O G I N  B U T T O N
+              ElevatedButton(onPressed: () {
+                Navigator.pushNamed(context, '/loginpage' );
+              },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.grey,
                     shape: RoundedRectangleBorder(
@@ -56,7 +54,12 @@ class FirstPage extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     color: Colors.white
                   ))),
-              ElevatedButton( onPressed: () {},
+
+              // R E G I S T E R B U T T O N
+
+              ElevatedButton( onPressed: () {
+                Navigator.pushNamed(context, '/secondpage');
+              },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.red,
                       shape: RoundedRectangleBorder(
@@ -80,14 +83,3 @@ class FirstPage extends StatelessWidget {
     );
   }
 }
-
-/*
-  child: ElevatedButton(
-            child: Text("Go to second Page"),
-            onPressed: () {
-              // navigate to second page
-              Navigator.pushNamed(context, '/personalBio');
-            },
-          )
-
- */

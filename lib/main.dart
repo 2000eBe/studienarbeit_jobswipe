@@ -114,6 +114,8 @@
 import 'package:flutter/material.dart';
 import 'package:studienarbeit/pages/change_bio_page.dart';
 import 'package:studienarbeit/pages/first_page.dart';
+import 'package:studienarbeit/pages/login_page.dart';
+import 'package:studienarbeit/pages/register_password_page.dart';
 import 'package:studienarbeit/pages/second_page.dart';
 
 void main() {
@@ -140,6 +142,8 @@ class MyApp extends StatelessWidget {
         '/firstpage'  : (context) => FirstPage(),
         '/secondpage' : (context) => SecondPage(),
         '/personalBio': (context) => PersonalBio(),
+        '/loginpage'  : (context) => LoginPage(),
+       '/registerPassword'  : (context) => RegisterPasswordPage(),
 
      },
 
